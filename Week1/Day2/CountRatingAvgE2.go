@@ -17,7 +17,7 @@ func main() {
 	noOfStudents := 200
 	ch := make(chan int)
 	var wg sync.WaitGroup
-	rand.Seed(time.Now().UnixNano())
+	//rand.Seed(time.Now().UnixNano())
 	for i := 0; i < noOfStudents; i++ {
 		wg.Add(1)
 		go takeRating(ch, &wg)
@@ -33,7 +33,10 @@ func main() {
 		fmt.Println(rating)
 		sum += rating
 	}
-	avg = sum / noOfStudents
+	//avg = sum / noOfStudents
+	//for i := 0; i < noOfStudents; i++ {
+	//	fmt.Print(<-ch, " ")
+	//}
 
 	fmt.Print("average rating is:", avg)
 
