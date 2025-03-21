@@ -12,7 +12,6 @@ func main() {
 
 	userService := service.NewUserService()
 	userController := controller.NewUserController(userService)
-
 	router.POST("/users", userController.CreateUser)
 	router.GET("/users", userController.GetUsers)
 
