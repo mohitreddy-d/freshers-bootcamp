@@ -1,14 +1,38 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
+	messages := make(chan string)
 
-	messages := make(chan string, 1)
+	//var wg sync.WaitGroup
+	go func() {
+		for i := 0; i < 100; i++ {
+			//wg.Add(1)
+			//go func(localI int) {
+			//defer wg.Done()
+			messages <- strconv.Itoa(i)
+			//}(i)
 
-	messages <- "buffered"
-	fmt.Println(<-messages)
-	messages <- "channel"
+		}
+		//wg.Wait()
+		close(messages)
+	}()
 
-	fmt.Println(<-messages)
+	for i := range messages {
+		fmt.Println(i)
+	}
+
+	//go func() { messages <- "str" }()
+	//go func() { messages <- "str" }()
+	//time.Sleep(time.Second)
+	//for i := range messages {
+	//	fmt.Println(i)
+	//}
+	//close(messages)
+	//message := <-messages
+	//fmt.Print(message)
 }
