@@ -58,7 +58,6 @@ func buildTree(str string, s int, e int) *Node {
 	node := Node{val: str[opIdx]}
 	node.left = buildTree(str, s, opIdx-1)
 	node.right = buildTree(str, opIdx+1, e)
-
 	return &node
 }
 
