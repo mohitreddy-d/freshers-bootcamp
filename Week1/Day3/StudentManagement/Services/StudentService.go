@@ -18,7 +18,7 @@ func GetAllStudents() ([]Models.Student, error) {
 
 func GetStudentById(id string) (Models.Student, error) {
 	var student Models.Student
-	if err := Config.DB.Preload("Marks").Find(&student).Error; err != nil {
+	if err := Config.DB.Preload("Marks").First(&student, id).Error; err != nil {
 		return student, err
 	}
 	return student, nil

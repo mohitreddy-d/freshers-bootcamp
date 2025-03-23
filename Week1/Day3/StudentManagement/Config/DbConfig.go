@@ -46,6 +46,8 @@ func ConnectDatabase() {
 	dsn := "root:root3004@tcp(localhost:3306)/student_manage?charset=utf8mb4&parseTime=True&loc=Local"
 	var err error
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	//Config.DB.Debug()
+
 	if err != nil {
 		panic("Failed to connect to database: " + err.Error())
 	}
